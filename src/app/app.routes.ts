@@ -11,5 +11,5 @@ export const routes: Routes = [
     {path:'addClient', component:AddClientComponent},
     {path: 'catalogo_clientes', component: ClientCatalogComponent},
     {path: 'pagos',component: PagosComponent},
-    {path: '**', redirectTo:'login'}
+    {path: '**', redirectTo:'principal'}
 ];
