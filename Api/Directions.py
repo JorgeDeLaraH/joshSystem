@@ -10,15 +10,8 @@ CORS(app,resources={r"/*":{"origins":"*"}})
 
 #Definición de rutas
 
-@app.route('/colabs', methods=['GET'])
-def getColabs():
-    try:
-        objResult=CallMethod.fnGetColabs()
-        return objResult
-    except Exception as e:
-        print("Error en getColabs",e)
-        return jsonify(ResponseMessage.err500)
 #Importante aqui viene la subida de cliente.
+"""
 @app.route('/newClient', methods=['GET','POST'])
 @cross_origin(allow_headers=['Content-Type'])
 def postClientes():
@@ -41,6 +34,19 @@ def postClientes():
         return objResult
     except Exception as e:
         print("Error en post clientes",e)
+        return jsonify(ResponseMessage.err500)
+"""
+@app.route('/auth', methods=['GET','POST'])
+@cross_origin(allow_headers=['Content-Type'])
+def authPost():
+    try:
+        user=request.json['user']
+        password=request.json['password']
+        print(user,password)
+        objResult=CallMethod.fnAuthPost(user,password)
+        return objResult
+    except Exception as e:
+        print("Error en auth",e)
         return jsonify(ResponseMessage.err500)
 
 app.after_request

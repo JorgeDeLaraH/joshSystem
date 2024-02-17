@@ -7,37 +7,19 @@ import BackEnd.GlobalInfo.Keys as ColabsKey
 if ColabsKey.dbconn==None:
     mongoConnect=MongoClient(ColabsKey.strConnection)
     ColabsKey.dbconn=mongoConnect[ColabsKey.strDBConnection]
-    dbClientes=ColabsKey.dbconn["ClClientes"]
+    dbUsers=ColabsKey.dbconn["clUsers"]
 
-def fnGetColabs():
+        #Funcion de post clientes
+def fnAuthPost(user,password):
     try:
-        arrFinalColab=[]
-        objQuery=dbClientes.find({})
-        listColabs=list(objQuery)
-        print(objQuery)
-        if len(listColabs)!=0:
-            for objColab in listColabs:
-                print(objColab)
-                objFormateado={
-                    "_id":str(objColab['_id']),
-                    "Nombre":objColab['Nombre']
-                }
-                arrFinalColab.append(objFormateado)
-        objResponse=ResponseMessage.succ200.copy()
-        objResponse['Respuesta']=arrFinalColab
-        return jsonify(objResponse)
+        print("Comprobacion de credenciales")
+        objQuery=dbUsers.find_one({"strName":user,"strPassword":password})
+        print(objQuery.get('strName'))
+        if(user==objQuery.get('strName') and password==objQuery.get('strPassword')):
+            objResponse=ResponseMessage.succ200.copy()
+            objResponse['Estatus_Acreditado']=True
+            return jsonify(objResponse)
     except Exception as e:
-        print("Error en fngetcolabs",e)
-        return jsonify(ResponseMessage.err500)
-
-#Funcion de post clientes
-def fnPostClientes(rfc,curp,nombre,paterno,materno,giro,direccion,cp,claveFiel,claveCiec,regimen,costo,notas,telefono):
-    try:
-        print("Insertare datos")
-        dbClientes.insert_many([{"strRFC":rfc},{"strCURP":curp},{"strNombre":nombre},{"strPaterno":paterno},{"strMaterno":materno},{"strGiro":giro},{"strDireccion":direccion},{"intCP":cp},{"strClaveFiel":claveFiel},{"strClaveCiec":claveCiec},{"strRegimen":regimen},{"floatCosto":costo},{"intTelefonos":telefono},{"strNotas":notas}])
-        objResponse=ResponseMessage.succ200.copy()
-        objResponse['Información_Registrada']=True
-        return jsonify(objResponse)
-    except Exception as e:
-        print("Error en fnPostClientes",e)
-        return jsonify(ResponseMessage.err500)
+        objResponse=ResponseMessage.err500
+        objResponse["Estatus_Acreditado"]=False
+        return jsonify(objResponse,e)
