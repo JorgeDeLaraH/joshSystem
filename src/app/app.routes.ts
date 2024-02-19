@@ -7,7 +7,7 @@ import { ClientCatalogComponent } from './pages/client-catalog/client-catalog.co
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent},
-    {path: 'principal',component: PrincipalComponent},
+    {path: 'principal/:dato',component: PrincipalComponent},
     {path:'addClient', component:AddClientComponent},
     {path: 'catalogo_clientes', component: ClientCatalogComponent},
     {path: 'pagos',component: PagosComponent},

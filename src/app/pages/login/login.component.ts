@@ -34,7 +34,7 @@ export class LoginComponent {
       this.authService.authPost(data).subscribe((res: any) => {
         console.log(res.Estatus_Acreditado)
         if (res.Estatus_Acreditado == true) {
-          this.router.navigate(['principal'])
+          this.router.navigate(['principal',data.user])
         }
         else {
           Swal.fire(

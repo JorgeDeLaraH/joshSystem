@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -7,7 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })
-export class PrincipalComponent {
-  nombre="Jorge"
-
+export class PrincipalComponent implements OnInit{
+  nombre=""
+  constructor(private route:ActivatedRoute){
+  }
+  ngOnInit(): void {
+    this.route.params.subscribe(params=>{
+      this.nombre=params['dato']
+    })
+  }
+  redirect(valor:any){
+    console.log(valor.value)
+  }
+  
 }

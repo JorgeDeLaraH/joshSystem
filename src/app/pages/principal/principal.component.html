@@ -25,7 +25,7 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <td><a href="" class="nav-link"><div>Clientes</div></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#cont-clientes" class="nav-link"><div>Clientes</div></a></td>
               </tr>
               <tr>
                 <td><a href="" class="nav-link"><div>Pagos</div></a></td>
@@ -115,3 +115,30 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="cont-clientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Que desear hacer?</h2>
+        
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="redirect($event)">Opcion 1</button>
+        <button type="button" class="btn btn-primary">Opcion 2</button>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3 text-white" style="background-color: #277FF2;">
+    © 2024 Copyright:
+    <a class="text-white nav-item" style="text-decoration: none;" href="#">ServiTec Calvillo</a>
+  </div>
+  <!-- Copyright -->
+</footer>
