@@ -49,9 +49,19 @@ def authPost():
         print("Error en auth",e)
         return jsonify(ResponseMessage.err500)
 
+@app.route('/getUser/<id>', methods=['GET'])
+@cross_origin(allow_headers=['Content-Type'])
+def getUser(id):
+    try:
+        objResult=CallMethod.fnGetUser(id)
+        return objResult
+    except Exception as e:
+        print("Error en getUser",e)
+        return jsonify(ResponseMessage.err500)
+
 app.after_request
 def after_request(response):
-  response.headers.add('Access-Control-Allow-Origin', 'http://localhost:4200')
+  response.headers.add('Access-Control-Allow-Origin', 'http://localhost:4200','http://192.168.100.12/auth')
   response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
   response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
   response.headers.add('Access-Control-Allow-Credentials', 'true')

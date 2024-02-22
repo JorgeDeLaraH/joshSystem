@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AlertService } from '../../services/alert.service';
 NgClass
 @Component({
   selector: 'app-login',
@@ -18,6 +18,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private alertService: AlertService
   ) { }
 
   password = ''
@@ -32,31 +33,18 @@ export class LoginComponent {
     }
     if(data.user!='' && data.password!=''){
       this.authService.authPost(data).subscribe((res: any) => {
-        console.log(res.Estatus_Acreditado)
+        console.log(res)
         if (res.Estatus_Acreditado == true) {
-          this.router.navigate(['principal',data.user])
+          localStorage.setItem('key',res.Prueba)
+          this.router.navigate(['principal'])
         }
         else {
-          Swal.fire(
-            {
-              title:"Alerta",
-              text: "Verifica tus credenciales",
-              icon: "warning",
-              confirmButtonColor:'#277FF2'
-            }
-          );
+          this.alertService.generalAlert("Alerta","Verifica tus credenciales","warning","#277FF2");
         }
       })
     }
     else{
-      Swal.fire(
-        {
-          title:"Alerta",
-          text: "Llena los campos por favor",
-          icon: "warning",
-          confirmButtonColor:'#277FF2'
-        }
-      );
+      this.alertService.generalAlert("Alerta", "Llena los campos por favor","warning","#277FF2");
     }
     
   }

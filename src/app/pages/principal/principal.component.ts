@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { ClientsService } from '../../services/clients.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './principal.component.html',
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent implements OnInit{
-  nombre=""
-  constructor(private route:ActivatedRoute){
+  id:any
+  nombreCompleto=""
+  rol=""
+  constructor(private service: ClientsService){
   }
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
-      this.nombre=params['dato']
+    if(typeof localStorage !=='undefined'){
+      this.id=localStorage.getItem('key');
+    console.log(this.id)
+    this.service.getUser(this.id).subscribe((res:any)=>{
+      this.nombreCompleto=res.Nombre+" "+res.Apellido;
+      this.rol=res.Rol;
+      console.log(this.rol)
     })
+    }
+    
   }
-  redirect(valor:any){
-    console.log(valor.value)
-  }
+
   
 }
