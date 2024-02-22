@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { _URL_AUTH, _URL_GET_USER, _URL_SERVICES_BE } from '../config/config';
 @Injectable({
