@@ -17,8 +17,8 @@ export class PrincipalComponent implements OnInit{
   ngOnInit(): void {
     if(typeof localStorage !=='undefined'){
       this.id=localStorage.getItem('key');
-    console.log(this.id)
-    this.service.getUser(this.id).subscribe((res:any)=>{
+      console.log(this.id)
+      this.service.getUser(this.id).subscribe((res:any)=>{
       this.nombreCompleto=res.Nombre+" "+res.Apellido;
       this.rol=res.Rol;
       console.log(this.rol)

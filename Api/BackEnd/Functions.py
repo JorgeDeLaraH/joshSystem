@@ -9,13 +9,12 @@ if ColabsKey.dbconn==None:
     ColabsKey.dbconn=mongoConnect[ColabsKey.strDBConnection]
     dbUsers=ColabsKey.dbconn["clUsers"]
 
-        #Funcion de post clientes
+#Funcion de post clientes
 def fnAuthPost(user,password):
     try:
         print("Comprobacion de credenciales")
         objQuery=dbUsers.find_one({"strName":user,"strPassword":password})
         id=str(objQuery.get('_id'))
-        print(objQuery.get('_id'))
         if(user==objQuery.get('strName') and password==objQuery.get('strPassword')):
             objResponse=ResponseMessage.succ200.copy()
             objResponse['Prueba']=id
@@ -30,10 +29,9 @@ def fnGetUser(id):
     try:
         print("Comprobacion de credenciales")
         objQuery=dbUsers.find_one({"_id":ObjectId(id)})
-        print(objQuery)
-        nombre=objQuery.get('strName');
-        apellido=objQuery.get('strFirstLast');
-        rol=objQuery.get('strRole');
+        nombre=objQuery.get('strName')
+        apellido=objQuery.get('strFirstLast')
+        rol=objQuery.get('strRole')
         objResponse=ResponseMessage.succ200.copy()
         objResponse['Nombre']=nombre
         objResponse['Apellido']=apellido
