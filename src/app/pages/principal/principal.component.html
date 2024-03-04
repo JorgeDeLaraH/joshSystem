@@ -10,10 +10,22 @@
           <a class="nav-link active" aria-current="page" href="#"></a>
         </li>
       </ul>
+      <div class="dropdown-center">
+        <a class="dropdown-toggle nav-link text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </a>
+        <ul class="dropdown-menu bg-white">
+          <li><a class="dropdown-item text-black" href="#" (click)="sesionClose()">Cerrar Sesión</a></li>
+          <li><a class="dropdown-item text-black" href="#">Cambiar Contraseña</a></li>
+        </ul>
+      </div>
+      <div class="px-5 mx-5">
+        
+      </div>
     </div>
   </div>
 </nav>
 <div class="container">
+  <!--Este es el modulo de contabilidad-->
   <div class="row-cols-12 mb-4">
     <div class="col-12 text-center">
       <div class="card">
@@ -34,10 +46,10 @@
                 <td><a href="" class="nav-link"><div>Reportes de Pagos</div></a></td>
               </tr>
               <tr>
-                <td><a href="" class="nav-link"><div>Reportes Generales</div></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#cont-reportes" class="nav-link"><div>Reportes Generales</div></a></td>
               </tr>
               <tr *ngIf="rol=='Admin'">
-                <td><a href="" class="nav-link"><div>Opciones Especiales</div></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#cont-especial" class="nav-link"><div>Opciones Especiales</div></a></td>
               </tr>
               <tr>
                 <td><a href="" class="nav-link"><div>Gráficas</div></a></td>
@@ -48,6 +60,7 @@
       </div>
     </div>
   </div>
+  <!--Modulo de Prestamos-->
   <div class="row-cols-12 mb-4">
     <div class="col-12 text-center">
       <div class="card">
@@ -59,16 +72,16 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <td><a href="" class="nav-link">Clientes</a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#prest-clientes" class="nav-link">Clientes</a></td>
               </tr>
               <tr>
-                <td><a href="" class="nav-link"><div>Pagos</div></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#prest-pagos" class="nav-link"><div>Pagos</div></a></td>
               </tr>
               <tr>
                 <td><a href="" class="nav-link"><div>Generar Prestamo</div></a></td>
               </tr>
               <tr>
-                <td><a href="" class="nav-link"><div>Reportes</div></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#prest-reportes" class="nav-link"><div>Reportes</div></a></td>
               </tr>
               <tr>
                 <td><a href="" class="nav-link"><div>Reporte Pagos Cliente Por Cobrador</div></a></td>
@@ -88,6 +101,7 @@
       </div>
     </div>
   </div>
+  <!--Modulo de visas-->
   <div class="row-cols-12 mb-4">
     <div class="col-12 text-center">
       <div class="card">
@@ -114,21 +128,183 @@
     </div>
   </div>
 </div>
+<!--Este modal es para clientes de contabilidad-->
 <div class="modal fade" id="cont-clientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Clientes</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h2>Que desear hacer?</h2>
-        
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a routerLink="/addClient" data-bs-dismiss="modal" class="nav-link fs-5"><div>Agregar</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Catalogo Editar</div></a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Opcion 1</button>
-        <button type="button" class="btn btn-primary">Opcion 2</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal para Reportes generales-->
+<div class="modal fade" id="cont-reportes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Reportes Generales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Reporte Clientes con Atraso</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Reporte de Clientes por Regimen</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Listas de Cobros a Domicilio</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Lista de contraseñas</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Reimprimir Recibos</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Reporte Ultimos pagos</div></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal para opciones especiales-->
+<div class="modal fade" id="cont-especial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Reportes Generales</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a href="" class="nav-link"><div>Eliminar Pagos</div></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal para clientes de prestamos-->
+<div class="modal fade" id="prest-clientes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Clientes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Agregar Cliente</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Catalogo Cliente</div></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal para prestamos pagos-->
+<div class="modal fade" id="prest-pagos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Pagos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Registrar Pagos</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Histórico Pagos</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reimprimir Recibo</div></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal para reportes de prestamos-->
+<div class="modal fade" id="prest-reportes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-2" id="exampleModalLabel">Reportes</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <tbody>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte Pago por Cliente</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte de Cliente Cobrador</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte de Cliente con Atraso Pago</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte de Clientes con Prestamo Activo</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte de Pagos</div></a></td>
+            </tr>
+            <tr class="text-center">
+              <td><a href="" class="nav-link fs-5"><div>Reporte de Cartera Vencida</div></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
