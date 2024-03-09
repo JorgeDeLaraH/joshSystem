@@ -1,0 +1,197 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-3 mb-3" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Bienvenido</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h3 class="text-center mb-4 fs-3">Agregar Cliente</h3>
+    
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">RFC:</span>
+                <input [(ngModel)]="persona.RFC" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">CURP:</span>
+                <input [(ngModel)]="persona.CURP" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Nombre(s):</span>
+                <input [(ngModel)]="persona.Nombre" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">Apellido Paterno:</span>
+                <input [(ngModel)]="persona.apellidoPaterno" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Apellido Materno:</span>
+                <input [(ngModel)]="persona.apellidoMaterno" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">Giro Empresarial:</span>
+                <input [(ngModel)]="persona.Giro" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Dirección:</span>
+                <input [(ngModel)]="persona.Direccion" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">Código Postal:</span>
+                <input [(ngModel)]="persona.codigoPostal" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Clave FIEL:</span>
+                <input [(ngModel)]="persona.claveFiel" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">Clave CIEC:</span>
+                <input [(ngModel)]="persona.claveCsd" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Régimen: </span>
+                <div class="form-control row">
+                    <div class="col-12">
+                        <input value="Régimen Incorporación Fiscal" [(ngModel)]="persona.regimenFiscal" type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                        <label class="form-check-label" for="flexCheckDefault">Régimen Incorporación Fiscal</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck2">
+                        <label class="form-check-label" for="flexCheckDefault">Régimen Empresarial y Profesional</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck3">
+                        <label class="form-check-label" for="flexCheckDefault">Arrendamiento</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck4">
+                        <label class="form-check-label" for="flexCheckDefault">Persona Moral</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck5">
+                        <label class="form-check-label" for="flexCheckDefault">Régimen Simplificado de Confianza</label>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck6">
+                        <label class="form-check-label" for="flexCheckDefault">Otro
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" placeholder="Especifique">
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3 h-3">
+                <span class="input-group-text w-25" id="inputGroup-sizing-default">Costo: </span>
+                <div class="form-control row">
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input [(ngModel)]="persona.cobroMensual" type="number" class="form-control" placeholder="Costo" aria-label="Server">
+                          </div>
+                    </div>
+                    <div class="col-12">
+                        <input type="checkbox" class="form-check-input mx-3" id="exampleCheck1">
+                        <label class="form-check-label" for="flexCheckDefault">Cobro a Domicilio</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text w-25" id="inputGroup-sizing-default">Archivos: </span>
+                <div class="form-control row">
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group mb-3 d-flex justify-content-center align-items-center">
+                                <input type="file" class="form-control" id="inputGroupFile01" placeholder="Elegir Archivo">
+                              </div>
+                          </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto text-center" id="inputGroup-sizing-default">Teléfono: </span>
+                <input [(ngModel)]="persona.Telefono" type="number" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text w-auto" id="inputGroup-sizing-default">Teléfono Secundario: </span>
+                <input type="number" maxlength="10" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-floating mb-3">
+            <textarea [(ngModel)]="persona.Notas" class="form-control p-5" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea" class="mx-2">Notas</label>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center mb-3">
+            <button (click)="submit()" class="btn btn-primary">Agregar</button>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-primary">Regresar</button>
+        </div>
+    </div>
+</div>
