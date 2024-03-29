@@ -28,8 +28,8 @@ export class LoginComponent {
     e.preventDefault();
     console.log("Entre a login")
     let data = {
-      user: this.username,
-      password: this.password
+      user: this.username.trim(),
+      password: this.password.trim()
     }
     if(data.user!='' && data.password!=''){
       this.authService.authPost(data).subscribe((res: any) => {
