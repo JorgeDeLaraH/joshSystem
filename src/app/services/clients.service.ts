@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { _URL_AUTH, _URL_GET_USER, _URL_SERVICES_BE } from '../config/config';
+import { _URL_AUTH, _URL_GET_USER, _URL_SEARCH, _URL_SERVICES_BE } from '../config/config';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,5 +14,8 @@ export class ClientsService {
   }
   public getUser(id:any):Observable<any>{
     return this.http.get(_URL_GET_USER+id);
+  }
+  public searchClients(param:any):Observable<any>{
+    return this.http.get(_URL_SEARCH+param);
   }
 }

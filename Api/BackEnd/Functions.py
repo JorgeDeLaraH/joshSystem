@@ -8,6 +8,7 @@ if ColabsKey.dbconn==None:
     mongoConnect=MongoClient(ColabsKey.strConnection)
     ColabsKey.dbconn=mongoConnect[ColabsKey.strDBConnection]
     dbUsers=ColabsKey.dbconn["clUsers"]
+    dbClients=ColabsKey.dbconn["clClients"]
 
 #Funcion de post clientes
 def fnAuthPost(user,password):
@@ -43,3 +44,26 @@ def fnGetUser(id):
         objResponse=ResponseMessage.err500
         objResponse["Estatus_Acreditado"]=False
         return jsonify(objResponse,e)
+
+def fnSearchTerm(param):
+    try:
+        arrFinalColab=[]
+        objQuery=dbClients.find({'$or': [{'strNombre': {'$regex': param, '$options': 'i'}},
+            {'strLast': {'$regex': param, '$options': 'i'}}]})
+        listClients=list(objQuery)
+        if len(listClients)!=0:
+            for objClient in listClients:
+                objFormateado={
+                    "_id":str(objClient['_id']),
+                    "Nombre":objClient["strNombre"],
+                    "Apellido":objClient['strLast']
+                }
+                arrFinalColab.append(objFormateado)
+        objResponse=ResponseMessage.succ200.copy()
+        objResponse['Respuesta']=arrFinalColab
+        print(objResponse)
+        return jsonify(objResponse)
+    except Exception as e:
+        print("Error en fnSearchTerm",e)
+        objResponse=ResponseMessage.err500
+        return jsonify(objResponse)

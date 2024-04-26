@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ClientsService } from '../../services/clients.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -19,7 +19,12 @@ export class PrincipalComponent implements OnInit {
     private service: ClientsService,
     public router: Router,
     public alertService: AlertService
-  ) {
+  ) {}
+  //Captura el evento de dar marcha atras en el navegador
+  @HostListener('window:popstate',['$event'])
+  onPopState(event: any){
+    this.alertService.generalAlert("Alerta", "Por seguridad se cerro sesion", "warning", "#277FF2")
+    localStorage.removeItem("key");
   }
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
