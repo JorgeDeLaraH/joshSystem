@@ -45,6 +45,27 @@ def fnGetUser(id):
         objResponse["Estatus_Acreditado"]=False
         return jsonify(objResponse,e)
 
+def fnGetAllClients():
+    try:
+        arrFinalColab=[]
+        objQuery=dbClients.find({})
+        listClients=list(objQuery)
+        if len(listClients)!=0:
+            for objClient in listClients:
+                objFormateado={
+                    "_id":str(objClient['_id']),
+                    "Nombre":objClient["strNombre"],
+                    "Apellido":objClient['strLast']
+                }
+                arrFinalColab.append(objFormateado)
+        objResponse=ResponseMessage.succ200.copy()
+        objResponse['Respuesta']=arrFinalColab
+        return jsonify(objResponse)
+    except Exception as e:
+        print("Error en fnGetAllClients",e)
+        objResponse=ResponseMessage.err500
+        return jsonify(objResponse)
+   
 def fnSearchTerm(param):
     try:
         arrFinalColab=[]

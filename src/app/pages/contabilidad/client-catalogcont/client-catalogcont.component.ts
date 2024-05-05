@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { AlertService } from '../../../services/alert.service';
 import { FormsModule } from '@angular/forms';
@@ -11,14 +11,25 @@ import { CommonModule } from '@angular/common';
   templateUrl: './client-catalogcont.component.html',
   styleUrl: './client-catalogcont.component.css'
 })
-export class ClientCatalogcontComponent {
+export class ClientCatalogcontComponent implements OnInit{
   constructor(private alert: AlertService,private clientService: ClientsService){}
   searchTerm:any
   prueba:any
+  ngOnInit(): void {
+    this.clientService.clientsList().subscribe((res:any)=>{
+      console.log(res.Respuesta)
+      this.prueba=res.Respuesta
+    })
+  }
   search(){
     this.clientService.searchClients(this.searchTerm).subscribe((res)=>{
-      this.prueba=res.Respuesta
-      console.log(res)
+      if(res==true){
+        this.ngOnInit()
+      }
+      else{
+        this.prueba=res.Respuesta
+      }
+      
     })
   }
 }

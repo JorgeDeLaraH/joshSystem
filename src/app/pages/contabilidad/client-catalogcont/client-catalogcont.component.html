@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary p-3 mb-3" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-4 mb-4" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Bienvenido</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -14,11 +14,25 @@
         </div>
     </div>
 </nav>
-<h1 class="text-center mt-4 mb-4">Lista de clientes</h1>
-
-  <input type="text" (keypress)="search()" [(ngModel)]="searchTerm" placeholder="Buscar..." name="searchTab">
-  <button type="submit">Buscar</button>
+<div class="container">
+  <div class="row">
+   <div class="col-3">
+    
+   </div>
+   <div class="col-6">
+    <h1 class="text-center mb-4">Lista de clientes</h1>
+   </div>
+   <div class="col-3">
+    <form role="search" class="d-flex mb-4">
+      <input class="form-control me-2 " type="text" (keyup)="search()" [(ngModel)]="searchTerm" placeholder="Buscar..." name="searchTab">
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+   </div> 
+  </div>
   
+  
+</div>
+
   <div class="container">
     <div class="row">
         <div class="col">
@@ -36,9 +50,9 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="text-center w-25">1</td>
-                            <td class="text-center w-25">Mark De Lara Hernandez</td>
+                          <tr *ngFor="let result of prueba; index as i">
+                            <td class="text-center w-25">{{i+1}}</td>
+                            <td class="text-center w-25">{{result.Nombre}} {{ result.Apellido }}</td>
                             <td class="text-center w-25">LAHJ931123GWA</td>
                             <td class="text-center w-25">LAHJ931123HASRRR04</td>
                             <td ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i></button></td>
@@ -65,11 +79,6 @@
       </ul>-->
       <p class="text-center text-body-secondary">© 2024 Grupo Asesores</p>
     </footer>
-  </div>
-  <div>
-    <ul>
-      <li *ngFor="let result of prueba">{{ result.Nombre }} {{ result.Apellido }}</li>
-    </ul>
   </div>
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -53,10 +53,31 @@ def authPost():
 @cross_origin(allow_headers=['Content-Type'])
 def searchTerm(param):
     try:
+        print(type(param))
         objResult=CallMethod.fnSearchTerm(param)
         return objResult
     except Exception as e:
         print("Error en auth",e)
+        return jsonify(ResponseMessage.err500)
+
+@app.route('/search/', methods=['GET'])
+@cross_origin(allow_headers=['Content-Type'])
+def searchEmpty():
+    try:
+        objResult=True
+        return jsonify(objResult)
+    except Exception as e:
+        print("Error en auth",e)
+        return jsonify(ResponseMessage.err500)
+
+@app.route('/allClients', methods=['GET'])
+@cross_origin(allow_headers=['Content-Type'])
+def allClients():
+    try:
+        objResult=CallMethod.fnGetAllClients()
+        return objResult
+    except Exception as e:
+        print("Error en allClients",e)
         return jsonify(ResponseMessage.err500)
 
 @app.route('/getUser/<id>', methods=['GET'])
