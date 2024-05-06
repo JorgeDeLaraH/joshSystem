@@ -27,6 +27,7 @@ export class ClientCatalogcontComponent implements OnInit{
         this.ngOnInit()
       }
       else{
+        console.log(res)
         this.prueba=res.Respuesta
       }
       

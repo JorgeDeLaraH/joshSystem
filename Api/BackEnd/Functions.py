@@ -55,7 +55,8 @@ def fnGetAllClients():
                 objFormateado={
                     "_id":str(objClient['_id']),
                     "Nombre":objClient["strNombre"],
-                    "Apellido":objClient['strLast']
+                    "RFC":objClient['strRFC'],
+                    "CURP":objClient['strCurp']
                 }
                 arrFinalColab.append(objFormateado)
         objResponse=ResponseMessage.succ200.copy()
@@ -70,14 +71,15 @@ def fnSearchTerm(param):
     try:
         arrFinalColab=[]
         objQuery=dbClients.find({'$or': [{'strNombre': {'$regex': param, '$options': 'i'}},
-            {'strLast': {'$regex': param, '$options': 'i'}}]})
+            {'strCurp': {'$regex': param, '$options': 'i'}}]})
         listClients=list(objQuery)
         if len(listClients)!=0:
             for objClient in listClients:
                 objFormateado={
                     "_id":str(objClient['_id']),
                     "Nombre":objClient["strNombre"],
-                    "Apellido":objClient['strLast']
+                    "RFC":objClient['strRFC'],
+                    "CURP":objClient['strCurp']
                 }
                 arrFinalColab.append(objFormateado)
         objResponse=ResponseMessage.succ200.copy()
