@@ -4,10 +4,11 @@ import { AlertService } from '../../../services/alert.service';
 import { FormsModule } from '@angular/forms';
 import { ClientsService } from '../../../services/clients.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-client-catalogcont',
   standalone: true,
-  imports: [NgClass,FormsModule, CommonModule],
+  imports: [NgClass,FormsModule, CommonModule, RouterLink],
   templateUrl: './client-catalogcont.component.html',
   styleUrl: './client-catalogcont.component.css'
 })

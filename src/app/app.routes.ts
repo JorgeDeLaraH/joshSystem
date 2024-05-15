@@ -12,6 +12,7 @@ import { ReportReimpresionComponent } from './pages/contabilidad/report-reimpres
 import { ReportUltpagosComponent } from './pages/contabilidad/report-ultpagos/report-ultpagos.component';
 import { GraphicsComponent } from './pages/contabilidad/graphics/graphics.component';
 import { EspecialesComponent } from './pages/contabilidad/especiales/especiales.component';
+import { AddClientPresComponent } from './pages/prestamos/add-client-pres/add-client-pres.component';
 
 export const routes: Routes = [
     {path:'login', component: LoginComponent},
@@ -28,5 +29,6 @@ export const routes: Routes = [
     {path: 'reporteUltimos',component: ReportUltpagosComponent},
     {path: 'graficasCont',component: GraphicsComponent},
     {path: 'opcionesEspeciales',component: EspecialesComponent},
+    {path: 'addClientPres', component: AddClientPresComponent},
     {path: '**', redirectTo:'login'}
 ];
